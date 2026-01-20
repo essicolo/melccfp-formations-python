@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.19.2"
+__generated_with = "0.19.4"
 app = marimo.App(width="medium")
 
 
@@ -9,13 +9,27 @@ def _(mo):
     mo.md(r"""
     # Installer Python
 
-    Marimo en ligne exécute du code Python grâce à Pyodide, un compilateur de code Python basé su des technologies web. Le code n'est pas exécuté dans l'infonuagique, mais dans votre navigateur. Cette approche a l'inconvéneient de n'utiliser qu'un seul processeur, mais elle a l'avantage de ne pas nécessiter d'installation de logiciel. Il existe de nombreuses approches pour installer Python.
+    Marimo en ligne exécute du code Python grâce à Pyodide, un compilateur de code Python basé su des technologies web. Le code n'est pas exécuté dans l'infonuagique, mais dans votre navigateur. Cette approche a l'inconvéneient de n'utiliser qu'un seul processeur, mais elle a l'avantage de ne pas nécessiter d'installation de logiciel. Il existe de nombreuses approches pour installer Python, qui se déclinent en deux philosophies: le Python natif (vanille) et tout-en-un.
+
+    ```
+    Vanille
+    ----- * ------------------------- virtualenv
+           \         /--------------- pipx
+            \ ----- * --------------- pip, venv
+                     \ ----- * ------ poetry
+                              \ ----- uv
+
+    Tout-en-un
+    ----- * --------------- conda
+           \ ----- * ------ mamba
+                    \ ----- pixi
+    ```
 
 
     | Outil          | Emplacement des environnements                               | Cas d’usage typique                                                                 |
     | -------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
     | conda      | Centralisé (`~/miniconda3/envs/` ou `~/anaconda3/envs/`)     | Dépendances système lourdes (géospatial, data science)                              |
-    | mamba      | Centralisé (`~/mamba/envs/`)                                 | Idem conda, mais bien plus rapide                                                   |
+    | **mamba**      | Centralisé (`~/mamba/envs/`)                                 | Idem conda, mais bien plus rapide                                                   |
     | **pixi**       | Local au projet (`.pixi/envs/`) + cache global pour binaires | Idem mamba, mais local au projet et plus reproductible                              |
     | virtualenv | Local au projet (`.venv/`)                                   | Environnements légers et classiques                                                 |
     | pipx       | Centralisé (`~/.local/pipx/venvs/`)                          | Installation isolée d’outils CLI Python                                             |
